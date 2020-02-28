@@ -2,7 +2,7 @@
 
 namespace EntityFrameworkApp
 {
-    class ApplicationContext: DbContext
+    public class ApplicationContext: DbContext
     {
         public DbSet<Card> Cards { get; set; }
         public DbSet<Painter> Painters { get; set; }
