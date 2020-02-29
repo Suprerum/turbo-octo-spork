@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EntityFrameworkApp;
+using EntityFrameworkApp
 
 namespace WebAPIApp.Controllers
 {
@@ -29,16 +30,21 @@ namespace WebAPIApp.Controllers
 
         // GET: api/Painter/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Painter>> GetPainter(int id)
+        public async Task<ActionResult<PainterReadModel>> GetPainter(int id)
         {
             var painter = await _context.Painters.FindAsync(id);
-
+            
             if (painter == null)
             {
                 return NotFound();
             }
+            PainterReadModel painterModel = new PainterReadModel() { 
+                Id = painter.Id, 
+                Name = painter.Name, 
+                Surname = painter.Surname, 
+                Cards = painter.Cards};
 
-            return painter;
+            return painterModel; ;
         }
 
         // PUT: api/Painter/5

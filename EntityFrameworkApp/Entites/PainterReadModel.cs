@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EntityFrameworkApp.Entites
+namespace EntityFrameworkApp
 {
     public class PainterReadModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public List<Card> Cards { get; set; }
     }
 }
